@@ -43,3 +43,14 @@ def omple_comunicacions(caraA, caraB, operari):
     #operaris
     caraA["G17"] = operari
     caraB["A8"] = operari
+
+def omple_vigilants(caraA, caraB, operari):
+    caraA["B9"] = 1013
+    caraA["J9"] = 'T.S.'
+    caraA["E6"] = 'Vigilancia'
+    caraA["B13"] = 30002
+    caraA["D13"] = "Atención a incidencias fuera del horario laboral"
+    caraB["A17"] = 203
+    #operaris
+    caraA["G17"] = operari
+    caraB["A8"] = operari

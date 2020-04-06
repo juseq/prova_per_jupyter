@@ -4,6 +4,13 @@ menú del programa
 import helpers
 import partes_per_dema as ppd
 import excel_helper as xlh
+import datetime
+from datetime import date
+
+# algunes dades
+avui = date.today()
+dema = avui + datetime.timedelta(days=1)
+aquest_any = dema.strftime("%y")
 
 # os.system('clear')
 helpers.clear()
@@ -25,14 +32,20 @@ option = input("> ")
 helpers.clear()
 
 if option == '1':
-    print("Fer els partes amb data de demà...\n")
-    total, operaris, n_parte = ppd.load()
     wb, cA, cB = xlh.load_cares_A_i_B()
-    for oper in operaris:
-        print("**** {0} ****".format(oper))
-        wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, oper)
+    print("Fer els partes amb data de demà...\n")
+    # comunicacions
+    operaris_coms, operaris_vig, n_parte = ppd.load()  
+    for oper in operaris_coms:
+        print("**** parte per l'operador: {0} ****".format(oper))
+        wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, oper, avui, dema, aquest_any, 'comunicacions')
+
+    # vigilància
+    for oper in operaris_vig:
+        print("**** parte pel vigilant: {0} ****".format(oper))
+        wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, oper, avui, dema, aquest_any, 'vigilància')
         
-    helpers.desa_wb(wb)
+    helpers.desa_wb(wb, dema)
 
 if option == '2':
     print("Fer els partes amb data d'avui...\n")

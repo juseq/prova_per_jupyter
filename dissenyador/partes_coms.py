@@ -13,11 +13,11 @@ def load():
         }
 
     while True:
-        print("Entrar nums. separats per espais: ")
+        print("\nEntrar nums. de comunicacions separats per espais: ")
         operaris = input("> ")
         operadors = operaris.split()
         total_operaris = len(operadors)
-        print("Personal de comunicacions: {0}".format(total_operaris))
+        print("\nPersonal de comunicacions: {0}".format(total_operaris))
         
         try:
             for opers in operadors: 
@@ -27,4 +27,4 @@ def load():
             print("\nERROR: l'operari no existeix...\n")
 
     #input("\nPrèmer ENTER per continuar...")
-    return(total_operaris, operadors)
+    return(operadors)
