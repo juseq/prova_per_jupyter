@@ -26,9 +26,9 @@ helpers.clear()
 
 if option == '1':
     print("Fer els partes amb data de demà...\n")
-    total, opers, n_parte = ppd.load()
+    total, operaris, n_parte = ppd.load()
     wb, cA, cB = xlh.load_cares_A_i_B()
-    for oper in opers:
+    for oper in operaris:
         print("**** {0} ****".format(oper))
         wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, oper)
         
