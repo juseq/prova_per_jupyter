@@ -10,9 +10,13 @@ def clear():
     else:
         os.system('clear')
 
+def salta(salts=1):
+    for i in range(salts):
+        print("\n")
+
 def omple_parte(n_parte, oparari_o_codi, wb, cA, cB, avui, dema, aquest_any, section):
     def entra_encarregat(name="M. Martín"):
-        #pass
+        #TODO
         return name       
 
     #cara A
@@ -25,7 +29,7 @@ def omple_parte(n_parte, oparari_o_codi, wb, cA, cB, avui, dema, aquest_any, sec
     novaB.title = 'parte ' + "{:0>4d}".format(n_parte) + 'B'
     xlh.inserta_logo(novaB, "fitxers/logo-vector-becsa.png", 70, 150)
     
-    #comunicacions?
+    # secció?
     if section == 'comunicacions':
         xlh.omple_comunicacions(novaA, novaB, oparari_o_codi)
     elif section == 'vigilància':

@@ -1,6 +1,7 @@
 """
 partes vigilància
 """
+import helpers
 
 def load():
     total_vigilants = 0
@@ -19,6 +20,8 @@ def load():
         }
 
     while True:
+        helpers.salta(2)
+        print("******** VIGILANCIA *********")
         print("\nEntrar nums. dels vigilants separats per espais: ")
         operaris = input("> ")
         vigilants = operaris.split()

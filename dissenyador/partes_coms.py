@@ -1,6 +1,7 @@
 """
 partes comuicacions
 """
+import helpers
 
 def load():
     total_operaris = 0
@@ -13,6 +14,8 @@ def load():
         }
 
     while True:
+        helpers.salta(2)
+        print("******** COMUNICACIONS *********")
         print("\nEntrar nums. de comunicacions separats per espais: ")
         operaris = input("> ")
         operadors = operaris.split()

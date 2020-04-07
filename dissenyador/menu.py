@@ -6,6 +6,7 @@ import partes_per_dema as ppd
 import excel_helper as xlh
 import datetime
 from datetime import date
+import nom_equip as ne
 
 # algunes dades
 avui = date.today()
@@ -35,25 +36,38 @@ if option == '1':
     wb, cA, cB = xlh.load_cares_A_i_B()
     print("Fer els partes amb data de demà...\n")
     operaris_coms, operaris_vig, operacions_brigada, n_parte = ppd.load()  
-    # # comunicacions
-    # for oper in operaris_coms:
-    #     print("**** parte per l'operador: {0} ****".format(oper))
-    #     wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, oper, avui, dema, aquest_any, 'comunicacions')
+    # comunicacions
+    for oper in operaris_coms:
+        print("**** parte per l'operador: {0} ****".format(oper))
+        wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, oper, avui, dema, aquest_any, 'comunicacions')
+    print("++++++++++++++++++")
 
-    # # vigilància
-    # for oper in operaris_vig:
-    #     print("**** parte pel vigilant: {0} ****".format(oper))
-    #     wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, oper, avui, dema, aquest_any, 'vigilància')
+    # vigilància
+    for oper in operaris_vig:
+        print("**** parte pel vigilant: {0} ****".format(oper))
+        wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, oper, avui, dema, aquest_any, 'vigilància')
+    print("++++++++++++++++++")
 
     # brigada
     for codi in operacions_brigada:
-        print("**** parte de brigada: {0} ****".format(codi))
+        helpers.salta(1)
+        print("**** codi: {0} - ".format(codi) + " {1} ****".format(ne.equips[codi]))
         wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, codi, avui, dema, aquest_any, 'brigada')
-        
+    print("++++++++++++++++++")
+
     helpers.desa_wb(wb, dema)
 
 if option == '2':
     print("Fer els partes amb data d'avui...\n")
+    wb, cA, cB = xlh.load_cares_A_i_B()
+    operaris_coms, operaris_vig, operacions_brigada, n_parte = ppd.load()
+    # brigada
+    for codi in operacions_brigada:
+        print("**** parte de brigada: {0} - {1} ****".format(codi, ne.equips[codi]))
+        wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, codi, avui, dema, aquest_any, 'brigada')
+    print("Partes finalitzats")
+
+    helpers.desa_wb(wb, dema)
     # TODO
 if option == '3':
     print("Fer parte de vialitat...\n")
