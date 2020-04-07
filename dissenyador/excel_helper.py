@@ -2,6 +2,7 @@
 """
 from openpyxl import load_workbook
 from openpyxl.drawing.image import Image
+import nom_equip as ne
 
 def load_cares_A_i_B():
     filename = 'fitxers/caresAiB.xlsx'
@@ -36,6 +37,9 @@ def inserta_data(caraA, caraB, avui, dema, encarregat):
     # insereix encarregat
     caraA["F24"].value = encarregat
 
+def inserta_equip(caraA, codi):
+    caraA["E6"] = ne.equips[codi]
+
 def omple_comunicacions(caraA, caraB, operari):
     caraA["B9"] = 1011
     caraA["J9"] = 'C.C.'
@@ -54,3 +58,8 @@ def omple_vigilants(caraA, caraB, operari):
     #operaris
     caraA["G17"] = operari
     caraB["A8"] = operari
+
+def omple_brigada(caraA, caraB, codi):
+    #brigada
+    caraA["B9"] = codi
+    inserta_equip(caraA, codi)

@@ -10,7 +10,7 @@ def clear():
     else:
         os.system('clear')
 
-def omple_parte(n_parte, operari, wb, cA, cB, avui, dema, aquest_any, section):
+def omple_parte(n_parte, oparari_o_codi, wb, cA, cB, avui, dema, aquest_any, section):
     def entra_encarregat(name="M. Martín"):
         #pass
         return name       
@@ -27,9 +27,11 @@ def omple_parte(n_parte, operari, wb, cA, cB, avui, dema, aquest_any, section):
     
     #comunicacions?
     if section == 'comunicacions':
-        xlh.omple_comunicacions(novaA, novaB, operari)
+        xlh.omple_comunicacions(novaA, novaB, oparari_o_codi)
     elif section == 'vigilància':
-        xlh.omple_vigilants(novaA, novaB, operari)
+        xlh.omple_vigilants(novaA, novaB, oparari_o_codi)
+    elif section == 'brigada':
+        xlh.omple_brigada(novaA, novaB, oparari_o_codi)
 
     #dates i numeració
     xlh.inserta_num_parte(novaA, novaB, n_parte, aquest_any)

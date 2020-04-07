@@ -11,6 +11,11 @@ def load():
         '22' : 'Gual',
         '17' : 'Moisés',
         '23' : 'Padilla',
+        '1' : 'Francesc',
+        '9' : 'Sisco',
+        '10' : 'Jové',
+        '11' : 'Mesa',
+        '3' : 'Kike',
         }
 
     while True:

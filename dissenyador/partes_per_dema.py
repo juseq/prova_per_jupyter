@@ -4,6 +4,7 @@ dissenyar els partes per demà
 
 import partes_coms as pc
 import partes_vig as pv
+import partes_brigada as pb
 
 def load():
     print("Primer núm. de parte: ")
@@ -15,4 +16,7 @@ def load():
     # vig
     opers_vig = pv.load()
 
-    return(opers_coms, opers_vig, primer_parte)
+    # brigada
+    codis_brigada = pb.load()
+
+    return(opers_coms, opers_vig, codis_brigada, primer_parte)

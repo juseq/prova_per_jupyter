@@ -34,16 +34,21 @@ helpers.clear()
 if option == '1':
     wb, cA, cB = xlh.load_cares_A_i_B()
     print("Fer els partes amb data de demà...\n")
-    # comunicacions
-    operaris_coms, operaris_vig, n_parte = ppd.load()  
-    for oper in operaris_coms:
-        print("**** parte per l'operador: {0} ****".format(oper))
-        wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, oper, avui, dema, aquest_any, 'comunicacions')
+    operaris_coms, operaris_vig, operacions_brigada, n_parte = ppd.load()  
+    # # comunicacions
+    # for oper in operaris_coms:
+    #     print("**** parte per l'operador: {0} ****".format(oper))
+    #     wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, oper, avui, dema, aquest_any, 'comunicacions')
 
-    # vigilància
-    for oper in operaris_vig:
-        print("**** parte pel vigilant: {0} ****".format(oper))
-        wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, oper, avui, dema, aquest_any, 'vigilància')
+    # # vigilància
+    # for oper in operaris_vig:
+    #     print("**** parte pel vigilant: {0} ****".format(oper))
+    #     wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, oper, avui, dema, aquest_any, 'vigilància')
+
+    # brigada
+    for codi in operacions_brigada:
+        print("**** parte de brigada: {0} ****".format(codi))
+        wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, codi, avui, dema, aquest_any, 'brigada')
         
     helpers.desa_wb(wb, dema)
 
