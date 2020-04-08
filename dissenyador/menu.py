@@ -16,7 +16,7 @@ aquest_any = dema.strftime("%y")
 # os.system('clear')
 helpers.clear()
 
-print("========================================")
+print("\033[1;31;47m ========================================")
 print("   BENVINGUT AL DISSENYADOR DE PARTES   ")
 print("========================================")
 print("[1] Fer els partes per demà             ")
@@ -51,7 +51,7 @@ if option == '1':
     # brigada
     for codi in operacions_brigada:
         helpers.salta(1)
-        print("**** codi: {0} - ".format(codi) + " {1} ****".format(ne.equips[codi]))
+        print("**** parte de brigada: {0} - {1} ****".format(codi, ne.equips[codi]))
         wb, n_parte = helpers.fes_parte(wb, cA, cB, n_parte, codi, avui, dema, aquest_any, 'brigada')
     print("++++++++++++++++++")
 
